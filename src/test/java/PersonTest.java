@@ -49,7 +49,7 @@ public class PersonTest {
     void unaMujerDaSuEdad(){
         lista.add(m);
         double valorObtenido = p.averageAgePerGender(lista)[1];
-        int valorEsperado = p.age();
+        int valorEsperado = m.age();
         assertEquals(valorEsperado,valorObtenido);
     }
 
@@ -59,7 +59,7 @@ public class PersonTest {
         lista.add(m);
         double[] valoresObtenido = p.averageAgePerGender(lista);
         double[] valoresEsperado = {p.age(), m.age()};
-        assertEquals(valoresEsperado,valoresObtenido);
+        assertArrayEquals(valoresEsperado,valoresObtenido);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class PersonTest {
         lista.add(m2);
         lista.add(m3);
         double[] valoresObtenido = p.averageAgePerGender(lista);
-        double[] valoresEsperado = {2,21};
-        assertEquals(valoresEsperado,valoresObtenido);
+        double[] valoresEsperado = {2,24.333333333333332};
+        assertArrayEquals(valoresEsperado,valoresObtenido);
     }
 }

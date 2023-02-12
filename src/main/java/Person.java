@@ -42,14 +42,15 @@ public class Person {
      * @return
      */
     public double[] averageAgePerGender(List<Person> persons) {
-        int nMale = 0, nFemale = 0;
-        int totalAgeMale = 0, totalAgeFemale = 0;
+        double nMale = 0, nFemale = 0;
+        double totalAgeMale = 0, totalAgeFemale = 0;
         double averageMale = 0, averageFemale = 0;
 
+        if (persons.isEmpty()) {
+            throw new RuntimeException("Lista vacía");
+        }
         for (int i = 0; i < persons.size(); i++) {
-            if (persons.size()==0) {
-                throw new RuntimeException("Lista vacía");
-            } else if (persons.get(i).gender.toUpperCase().equals("MALE")) {
+            if (persons.get(i).gender.toUpperCase().equals("MALE")) {
                 nMale++;
                 totalAgeMale += persons.get(i).age;
             } else if (persons.get(i).gender.toUpperCase().equals("FEMALE")) {
