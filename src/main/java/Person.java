@@ -47,17 +47,23 @@ public class Person {
         double averageMale = 0, averageFemale = 0;
 
         if (persons.isEmpty()) {
-            throw new RuntimeException("Lista vacía");
+            throw new RuntimeException("Lista vacía"); //Si es vacía salta un error
         }
         for (int i = 0; i < persons.size(); i++) {
-            if (persons.get(i).gender.toUpperCase().equals("MALE")) {
+            if(persons.get(i).name()==null){
+                throw new IllegalArgumentException("Nombre no puede ser nulo");
+            }
+            if(persons.get(i).age()<0){
+                throw new IllegalArgumentException("Edad negativa, parando ejecución"); //Si alguna edad es negativa da un error
+            }
+            if (persons.get(i).gender().toUpperCase().equals("MALE")) {
                 nMale++;
-                totalAgeMale += persons.get(i).age;
-            } else if (persons.get(i).gender.toUpperCase().equals("FEMALE")) {
+                totalAgeMale += persons.get(i).age();
+            } else if (persons.get(i).gender().toUpperCase().equals("FEMALE")) {
                 nFemale++;
-                totalAgeFemale += persons.get(i).age;
+                totalAgeFemale += persons.get(i).age();
             }else{
-                throw new RuntimeException("Gender not binary or missing");
+                throw new RuntimeException("Género no binario o nulo"); //Si el género es otro a male o female da un error
             }
         }
         if(nMale>0){
